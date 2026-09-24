@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Download AMBERV2RAY for Android</title>
+<meta name="description" content="Download the AMBERV2RAY APK for Android.">
+<style>
+:root{
+  --bg:#eef1f5; --panel:#ffffff; --ink:#182230; --muted:#5b6675; --line:#d5dbe3;
+  --amber:#f0a30a; --amber-ink:#1a1200; --focus:#182230;
+}
+@media (prefers-color-scheme:dark){
+  :root{ --bg:#101722; --panel:#18212f; --ink:#eef1f5; --muted:#a3adba; --line:#2b3648; --focus:#eef1f5; }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+main{max-width:34rem; margin:0 auto; padding:2.5rem 1.25rem 3rem}
+.brand{display:flex; align-items:flex-end; gap:.75rem}
+.bars{flex:none; width:2.6rem; height:2.6rem}
+h1{margin:0; font-size:clamp(2rem,9vw,2.9rem); line-height:1; font-weight:800; letter-spacing:-.03em}
+.lead{margin:.9rem 0 1.75rem; color:var(--muted); max-width:28rem}
+.btn{
+  display:block; text-align:center; text-decoration:none;
+  background:var(--amber); color:var(--amber-ink);
+  font-weight:700; font-size:1.2rem; padding:1.1rem 1rem; border-radius:14px;
+}
+.btn:hover{filter:brightness(1.06)}
+.btn:focus-visible,a:focus-visible{outline:3px solid var(--focus); outline-offset:3px}
+dl{
+  display:grid; grid-template-columns:auto 1fr; gap:.4rem 1.25rem;
+  margin:1.5rem 0 2rem; padding:1rem 1.1rem;
+  background:var(--panel); border:1px solid var(--line); border-radius:14px;
+}
+dt{color:var(--muted)}
+dd{margin:0; font-weight:600; text-align:right}
+h2{margin:0 0 .75rem; font-size:1.1rem}
+ol{margin:0; padding-left:1.25rem}
+li{margin-bottom:.6rem}
+.note{margin:1.5rem 0 0; color:var(--muted); font-size:.95rem}
+a{color:inherit}
+footer{margin-top:2.25rem; padding-top:1.25rem; border-top:1px solid var(--line); font-size:.95rem; color:var(--muted)}
+</style>
+</head>
+<body>
+<main>
+  <div class="brand">
+    <svg class="bars" viewBox="0 0 40 40" aria-hidden="true">
+      <rect x="2"  y="26" width="7" height="12" rx="2" fill="#f0a30a"/>
+      <rect x="12" y="19" width="7" height="19" rx="2" fill="#f0a30a"/>
+      <rect x="22" y="11" width="7" height="27" rx="2" fill="#f0a30a"/>
+      <rect x="32" y="2"  width="7" height="36" rx="2" fill="#f0a30a"/>
+    </svg>
+    <h1>AMBERV2RAY</h1>
+  </div>
+  <p class="lead">A V2Ray client for Android. Download the APK and install it on your phone.</p>
+
+  <a id="dl" class="btn" href="https://github.com/noelrubio143/boboka/releases/latest/download/AMBERV2RAY.apk">Download APK</a>
+
+  <dl>
+    <dt>Version</dt><dd id="ver">v1.0.1</dd>
+    <dt>File size</dt><dd id="size">96.6 MB</dd>
+    <dt>Works on</dt><dd>Android 5.0 and newer</dd>
+  </dl>
+
+  <h2>How to install</h2>
+  <ol>
+    <li>Tap Download APK and wait for the file to finish.</li>
+    <li>Open the file. If Android asks, allow installs from your browser.</li>
+    <li>Tap Install, then Open.</li>
+  </ol>
+  <p class="note">Google Play Protect may warn you because the app is not from the Play Store. Tap Install anyway to continue.</p>
+
+  <footer>
+    Older versions and release notes are on the
+    <a href="https://github.com/noelrubio143/boboka/releases">GitHub releases page</a>.
+  </footer>
+</main>
+
+<script>
+// Keeps version, size and link current with the newest GitHub release.
+// If this fails, the page still works with the fixed link above.
+(function () {
+  fetch('https://api.github.com/repos/noelrubio143/boboka/releases/latest', {
+    headers: { Accept: 'application/vnd.github+json' }
+  })
+    .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
+    .then(function (d) {
+      var apk = (d.assets || []).filter(function (a) { return /\.apk$/i.test(a.name); })[0];
+      if (!apk) return;
+      document.getElementById('ver').textContent = d.tag_name;
+      document.getElementById('size').textContent = (apk.size / 1048576).toFixed(1) + ' MB';
+      document.getElementById('dl').href = apk.browser_download_url;
+    })
+    .catch(function () {});
+})();
+</script>
+</body>
+</html>
